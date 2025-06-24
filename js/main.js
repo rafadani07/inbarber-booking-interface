@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         const resposta = document.createElement('div');
         resposta.className = 'chat-message';
-        resposta.textContent = 'Obrigado por sua mensagem! Em breve um de nossos atendentes entrará em contato.';
+        resposta.textContent = 'Obrigado por sua mensagem! Clique no botão agendar para marcar seu serviço.';
         chatConversation.appendChild(resposta);
         chatConversation.scrollTop = chatConversation.scrollHeight;
       }, 1000);
