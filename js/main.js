@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const sendButton = document.getElementById('send-btn');
   const chatInput = document.getElementById('chat-message-input');
   const chatConversation = document.getElementById('chat-conversation');
-  const loginBtn = document.getElementById('loginBtn');
+  const AgendarBtn = document.getElementById('AgendarBtn');
   const modal = document.getElementById('modal');
   const closeBtn = document.querySelector('.close-btn');
   const bookingForm = document.getElementById('booking-form');
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   
   // Eventos do modal
-  loginBtn.addEventListener('click', () => {
+  AgendarBtn.addEventListener('click', () => {
     modal.classList.remove('hidden');
   });
   
