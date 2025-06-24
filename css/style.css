@@ -1,0 +1,205 @@
+/* Estilos para mensagens de erro e sucesso */
+.error-message {
+  background-color: #fee2e2;
+  border: 1px solid #ef4444;
+  color: #991b1b;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0.75rem;
+  text-align: center;
+  animation: slideIn 0.3s ease-out;
+}
+
+.success-message {
+  background-color: #dcfce7;
+  border: 1px solid #22c55e;
+  color: #166534;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0.75rem;
+  text-align: center;
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Estilos para mensagens no chat */
+.chat-message {
+  background-color: #f3f4f6;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  border-radius: 0.75rem;
+  max-width: 80%;
+  animation: slideIn 0.3s ease-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.chat-message.sent {
+  background-color: #000000;
+  color: white;
+  margin-left: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para quando JavaScript está desabilitado */
+.noscript-message {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fee2e2;
+  color: #991b1b;
+  padding: 1rem;
+  text-align: center;
+  z-index: 50;
+  animation: slideDown 0.5s ease-out;
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { 
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to { 
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Tela de Boas-vindas */
+#welcome-screen {
+  animation: fadeIn 1s ease-out;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('https://images.pexels.com/photos/3992874/pexels-photo-3992874.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center;
+  background-size: cover;
+  position: relative;
+}
+
+#welcome-screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+  pointer-events: none;
+}
+
+#welcome-screen h1 {
+  animation: slideIn 1s ease-out;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 1;
+}
+
+#schedule-btn {
+  animation: slideIn 1s ease-out 0.3s backwards;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+#schedule-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  animation: pulse 2s infinite;
+}
+
+/* Logo Animation */
+#welcome-screen svg {
+  animation: fadeIn 1s ease-out;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+}
+
+/* Tela de Agendamento */
+#booking-screen {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Modal */
+.modal {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Histórico de Agendamentos */
+#booking-history li {
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  margin-bottom: 0.75rem;
+  background-color: #f9fafb;
+  transition: all 0.2s ease;
+  animation: slideIn 0.3s ease-out;
+}
+
+#booking-history li:hover {
+  background-color: #f3f4f6;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Input Focus States */
+input:focus {
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Hover Effects */
+button:not(#schedule-btn):hover {
+  transform: translateY(-1px);
+}
+
+/* Responsividade */
+@media (max-width: 640px) {
+  .chat-message {
+    max-width: 90%;
+  }
+  
+  #main-content {
+    padding: 1rem;
+  }
+  
+  #welcome-screen h1 {
+    font-size: 2rem;
+    padding: 0 1rem;
+  }
+
+  #schedule-btn {
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+  }
+}
+
+/* Esconder elementos */
+.hidden {
+  display: none !important;
+}
