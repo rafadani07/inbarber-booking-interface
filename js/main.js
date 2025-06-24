@@ -28,35 +28,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  function enviarMensagem() {
-    const mensagem = chatInput.value.trim();
-    if (!mensagem) return;
-    
-    try {
-      // Criar um novo elemento de mensagem
-      const messageDiv = document.createElement('div');
-      messageDiv.className = 'chat-message sent';
-      messageDiv.textContent = mensagem;
-      chatConversation.appendChild(messageDiv);
-      
-      // Limpar input e rolar para última mensagem
-      chatInput.value = '';
-      chatConversation.scrollTop = chatConversation.scrollHeight;
-      
-      // Simular resposta automática após 1 segundo
-      setTimeout(() => {
-        const resposta = document.createElement('div');
-        resposta.className = 'chat-message';
-        resposta.textContent = 'Obrigado por sua mensagem! Clique no botão agendar para marcar seu serviço.';
-        chatConversation.appendChild(resposta);
-        chatConversation.scrollTop = chatConversation.scrollHeight;
-      }, 1000);
-    } catch (erro) {
-      console.error('Erro ao enviar mensagem:', erro);
-      exibirErro('Não foi possível enviar a mensagem. Tente novamente.');
+  let step = 0;
+let userName = '';
+
+function enviarMensagem() {
+  const mensagem = chatInput.value.trim();
+  if (!mensagem) return;
+
+  // Mostra a mensagem do usuário
+  const messageDiv = document.createElement('div');
+  messageDiv.className = 'chat-message sent';
+  messageDiv.textContent = mensagem;
+  chatConversation.appendChild(messageDiv);
+  chatInput.value = '';
+  chatConversation.scrollTop = chatConversation.scrollHeight;
+
+  setTimeout(() => {
+    const resposta = document.createElement('div');
+    resposta.className = 'chat-message';
+
+    if (step === 0) {
+      userName = mensagem;
+      resposta.textContent = `${userName}, clique no botão Agendar para agendar. 📅`;
+      AgendarBtn.style.display = 'inline';
+      chatInput.disabled = true;
+      sendButton.disabled = true;
+      step = 1;
+    } else if (step === 1) {
+      resposta.textContent = `Agendamento realizado com sucesso, ${userName}! ✅`;
     }
-  }
-  
+    chatConversation.appendChild(resposta);
+    chatConversation.scrollTop = chatConversation.scrollHeight;
+  }, 500);
+}
   // Eventos do modal
   AgendarBtn.addEventListener('click', () => {
     modal.classList.remove('hidden');
