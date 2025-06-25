@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
+  if ('Notification' in window) {
+  Notification.requestPermission().then(function(permission) {
+    console.log('Permissão para notificação:', permission);
+  });
+}
+
   // Elementos da tela de boas-vindas
   const welcomeScreen = document.getElementById('welcome-screen');
   const bookingScreen = document.getElementById('booking-screen');
@@ -115,6 +121,7 @@ function enviarMensagem() {
       
       // Mostrar mensagem de sucesso
       exibirMensagem('Agendamento realizado com sucesso!', 'success');
+    notificarConfirmacaoAgenda();
     } catch (erro) {
       console.error('Erro ao agendar:', erro);
       exibirErro('Falha ao realizar agendamento. Por favor, tente novamente.');
@@ -147,5 +154,14 @@ function enviarMensagem() {
         messageDiv.remove();
       }
     }, 5000);
+  }
+
+  function notificarConfirmacaoAgenda() {
+    if ('Notification' in window && Notification.permission === 'granted') {
+      new Notification('Agendamento confirmado!', {
+        body: 'Sua agenda foi confirmada com sucesso.',
+        icon: 'https://cdn-icons-png.flaticon.com/512/190/190411.png'
+      });
+    }
   }
 });
